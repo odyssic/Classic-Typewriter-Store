@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/auth.service';
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
@@ -65,10 +66,10 @@ const firebaseConfig = {
       { path: 'login', component: LoginComponent },
       { path: 'admin/products', component: AdminProductsComponent },
       { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'my-orders', component: MyOrdersComponent },
+      { path: 'my/orders', component: MyOrdersComponent },
     ]),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -16,5 +16,5 @@ Google login functionality.
 
 1. Clone The repository
 2. CD into the repository
-3. npm install to update the node packages based on the package.json file
+3. 'npm install' to update the node packages based on the package.json file
 4. 'ng serve' to run the local server. 

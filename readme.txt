@@ -8,7 +8,7 @@ Built with assistance from a tutorial by Mosh Hamedani's Angular Course.
 
 Version: 
 
-Angular 10
+Angular 10.0.10
 Bootstrap 4.5
 Deployed to Firebase
 

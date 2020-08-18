@@ -1,7 +1,5 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  user$: Observable<firebase.User>;
-  constructor(private auth: AuthService) {}
+  constructor(public auth: AuthService) {}
 
   logout() {
     this.auth.logout();

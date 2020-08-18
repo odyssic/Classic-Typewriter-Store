@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/auth.service';
+import { AuthGuard } from 'src/app/auth-guard.service';
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
@@ -58,18 +59,44 @@ const firebaseConfig = {
     AngularFireStorageModule, // storage],
     NgbModule, // bootstrap ng
     RouterModule.forRoot([
+      // accessible to all
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'check-out', component: CheckOutComponent },
-      { path: 'order-success', component: OrderSuccessComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'my/orders', component: MyOrdersComponent },
+
+      // logged-in user routes
+      {
+        path: 'check-out',
+        component: CheckOutComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'order-success',
+        component: OrderSuccessComponent,
+        canActivate: [AuthGuard],
+      },
+
+      {
+        path: 'my/orders',
+        component: MyOrdersComponent,
+        canActivate: [AuthGuard],
+      },
+
+      // admin routes
+      {
+        path: 'admin/products',
+        component: AdminProductsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/orders',
+        component: AdminOrdersComponent,
+        canActivate: [AuthGuard],
+      },
     ]),
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

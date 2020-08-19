@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -5,10 +6,12 @@ import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth-guard.service';
 
 // firebase
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 // end firebase
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,16 +28,16 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCTZVifHUzyTv3oL4zjpgfdNMLgbcWzbCk',
-  authDomain: 'classic-typewriter.firebaseapp.com',
-  databaseURL: 'https://classic-typewriter.firebaseio.com',
-  projectId: 'classic-typewriter',
-  storageBucket: 'classic-typewriter.appspot.com',
-  messagingSenderId: '250385949303',
-  appId: '1:250385949303:web:048a77fdc4add6eb1b5c72',
-  measurementId: 'G-D4YMKXS1ZH',
-};
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyCTZVifHUzyTv3oL4zjpgfdNMLgbcWzbCk',
+//   authDomain: 'classic-typewriter.firebaseapp.com',
+//   databaseURL: 'https://classic-typewriter.firebaseio.com',
+//   projectId: 'classic-typewriter',
+//   storageBucket: 'classic-typewriter.appspot.com',
+//   messagingSenderId: '250385949303',
+//   appId: '1:250385949303:web:048a77fdc4add6eb1b5c72',
+//   measurementId: 'G-D4YMKXS1ZH',
+// };
 
 @NgModule({
   declarations: [
@@ -53,10 +56,11 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule, // storage],
+    AngularFireStorageModule, // storage
+    AngularFireDatabaseModule,
     NgbModule, // bootstrap ng
     RouterModule.forRoot([
       // accessible to all

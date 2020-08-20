@@ -1,3 +1,4 @@
+import { CategoryService } from './category.service';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { environment } from './../environments/environment';
@@ -109,7 +110,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       },
     ]),
   ],
-  providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService],
+  providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService, CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

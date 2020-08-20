@@ -1,3 +1,5 @@
+import { UserService } from './user.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -91,16 +93,16 @@ import { LoginComponent } from './login/login.component';
       {
         path: 'admin/products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AdminAuthGuardService],
       },
       {
         path: 'admin/orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AdminAuthGuardService],
       },
     ]),
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

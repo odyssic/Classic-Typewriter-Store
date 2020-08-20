@@ -29,6 +29,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 // const firebaseConfig = {
 //   apiKey: 'AIzaSyCTZVifHUzyTv3oL4zjpgfdNMLgbcWzbCk',
@@ -54,6 +55,7 @@ import { LoginComponent } from './login/login.component';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +98,11 @@ import { LoginComponent } from './login/login.component';
         canActivate: [AuthGuard, AdminAuthGuardService],
       },
       {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuardService],
+      },
+      {
         path: 'admin/orders',
         component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminAuthGuardService],
@@ -105,4 +112,4 @@ import { LoginComponent } from './login/login.component';
   providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

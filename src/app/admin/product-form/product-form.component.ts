@@ -1,3 +1,5 @@
+import { SnapshotAction } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class ProductFormComponent implements OnInit {
   categories$;
 
-  constructor(public categoryService: CategoryService) {
-    this.categories$ = categoryService.getCategories().snapshotChanges()
+  constructor(categoryService: CategoryService) {
+    this.categories$ = categoryService.getCategories()
+
   }
 
+
   ngOnInit(): void { }
+
 
 }

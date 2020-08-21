@@ -1,3 +1,4 @@
+import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
@@ -7,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth-guard.service';
-
+import { FormsModule } from '@angular/forms';
 // firebase
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
@@ -66,6 +67,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule,
+    FormsModule,
     NgbModule, // bootstrap ng
     RouterModule.forRoot([
       // accessible to all
@@ -110,7 +112,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       },
     ]),
   ],
-  providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService, CategoryService],
+  providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService, CategoryService, ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

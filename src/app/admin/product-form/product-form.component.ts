@@ -2,6 +2,7 @@ import { SnapshotAction } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-product-form',
@@ -11,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProductFormComponent implements OnInit {
   categories$;
 
-  constructor(categoryService: CategoryService) {
+  constructor(categoryService: CategoryService, private productService: ProductService) {
     this.categories$ = categoryService.getCategories()
 
+  }
+
+  save(product) {
+    this.productService.create(product);
+    console.log(product)
   }
 
 

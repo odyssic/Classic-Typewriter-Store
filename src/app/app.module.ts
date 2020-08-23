@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth-guard.service';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from "ng2-validation";
 // firebase
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
@@ -68,6 +69,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule,
     FormsModule,
+    CustomFormsModule,
     NgbModule, // bootstrap ng
     RouterModule.forRoot([
       // accessible to all

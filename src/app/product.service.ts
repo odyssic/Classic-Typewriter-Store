@@ -12,4 +12,16 @@ export class ProductService {
     return this.db.list('/products').push(product);
 
   }
+
+  getAll() {
+
+    return this.db.list('/products');
+  }
+
+  getProduct(productId) {
+    console.log('productId', productId)
+    let returnUrl = this.db.object('/products/' + productId)
+    return returnUrl
+
+  }
 }

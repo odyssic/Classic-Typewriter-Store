@@ -1,8 +1,8 @@
 import { SnapshotAction } from '@angular/fire/database';
-import { Observable } from 'rxjs';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -11,14 +11,23 @@ import { ProductService } from 'src/app/product.service';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
+  product;
 
-  constructor(categoryService: CategoryService, private productService: ProductService) {
-    this.categories$ = categoryService.getCategories()
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private categoryService: CategoryService,
+    private productService: ProductService) {
+    this.categories$ = categoryService.getCategories().take(1).subscribe(p => this.product = p)
+
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id) this.productService.getProduct(id).snapshotChanges()
 
   }
 
   save(product) {
     this.productService.create(product);
+    this.router.navigate(['/admin/products'])
     console.log(product)
   }
 

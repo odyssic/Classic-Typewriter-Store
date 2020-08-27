@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <p>
     <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
 </p>
+=======
+<a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+>>>>>>> eb77833f90cb03c334f0a158d5c094cc311d274b
 
 <table class="table">
     <thead>
@@ -12,9 +16,18 @@
     </thead>
     <tbody>
         <tr *ngFor="let p of products$ | async">
+<<<<<<< HEAD
             <td>{{p.title}}</td>
             <td>{{p.price}}</td>
             <td></td>
+=======
+            <td>{{p.payload.val().title}}</td>
+            <td>{{p.payload.val().price}}</td>
+            <td>
+                <a #routerLink name="routerLink" [routerLink]="['admin/products/', p.key]">Edit</a>
+                <p>{{routerLink}}</p>
+            </td>
+>>>>>>> eb77833f90cb03c334f0a158d5c094cc311d274b
         </tr>
     </tbody>
 </table>

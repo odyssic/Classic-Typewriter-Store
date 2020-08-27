@@ -97,28 +97,21 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       },
 
       // admin routes
-
-      {
-        path: 'admin/products/new',
-        component: ProductFormComponent,
-        canActivate: [AuthGuard, AdminAuthGuardService],
-      },
-
-      {
-        path: 'admin/products/:id',
-        component: ProductFormComponent,
-        canActivate: [AuthGuard, AdminAuthGuardService],
-      },
       {
         path: 'admin/products',
         component: AdminProductsComponent,
         canActivate: [AuthGuard, AdminAuthGuardService],
       },
       {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuardService],
+      },
+      {
         path: 'admin/orders',
         component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminAuthGuardService],
-      }
+      },
     ]),
   ],
   providers: [AuthService, AuthGuard, AdminAuthGuardService, UserService, CategoryService, ProductService],

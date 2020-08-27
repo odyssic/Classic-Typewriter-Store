@@ -4,19 +4,3 @@
 body {
     padding-top: 100px;
 }
-
-.form-container {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-}
-
-.product-form {
-    min-width: 50%;
-    flex-basis: 1;
-}
-
-.card-form {
-    min-width: 50%;
-    flex-basis: 1;
-}

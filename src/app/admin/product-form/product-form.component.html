@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for='imageUrl' for="">Image Url</label>
-                <input #imageUrl="ngModel" ngModel name="imageUrl" id='imageUrl' type="text" class="form-control" required url>
+                <input #imageUrl="ngModel" ngModel name="imageUrl" id='imageUrl' type="text" class="form-control" required>
                 <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
                     <div *ngIf="imageUrl.errors.required">Image Url is required.</div>
                     <div *ngIf="imageUrl.errors.url">Must be a valid Url.</div>
@@ -55,7 +55,7 @@
                 <div class="col-md-6 card-body d-flex flex-row">
 
                     <!-- Avatar -->
-                    <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar"> -->
+                    <img [src]="imageUrl.value" class="rounded-circle mr-3">
 
                     <!-- Content -->
                     <div>
